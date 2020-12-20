@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import Post
 from datetime import datetime
 from users.models import Profile
+from django.contrib.auth.models import User
 from django.views.decorators.cache import cache_page
 from django.conf import settings
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
@@ -22,20 +23,19 @@ def userIP(request):
 
 # function to verify the actial Ip address and the previous one
 def checkIp(request):
-    profile = Profile.objects.filter(user=request.user.id)[0]
-    current_ip = userIP(request)
+    user = User.objects.get(username = request.user.username)
+    try:
+        profile = Profile.objects.filter(user = user)[0]
+    except:
+        profile = Profile.objects.create(user = user, last_ip=userIP(request))
     last_ip = profile.last_ip
-    if last_ip:
-        if current_ip != last_ip:
-            profile.last_ip = current_ip
-            profile.save()
-            messages.warning(request, 'Pay attenction! your actual Ip address is different from the previous one')
-    else :
-        Profile.objects.create(user = request.user.username, last_ip = userIP(request))
-
+    current_ip = userIP(request)
+    if current_ip != last_ip:
+        profile.last_ip = current_ip
+        profile.save()
+        messages.warning(request, 'Pay attenction! your actual Ip address is different from the previous one')
 
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
-
 
 # home views
 @cache_page(CACHE_TTL)
