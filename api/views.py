@@ -5,6 +5,9 @@ from django.contrib import messages
 from .models import Post
 from datetime import datetime
 from users.models import Profile
+from django.views.decorators.cache import cache_page
+from django.conf import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
 
 # function to get Ip Adress
 def userIP(request):
@@ -30,7 +33,12 @@ def checkIp(request):
     else :
         Profile.objects.create(user = request.user.username, last_ip = userIP(request))
 
+
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
+
+
 # home views
+@cache_page(CACHE_TTL)
 def home(request):
     checkIp(request)
     posts = Post.objects.all().order_by('-datetime')
