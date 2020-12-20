@@ -6,7 +6,7 @@ from .models import Post
 from datetime import datetime
 from users.models import Profile
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_page
 from django.conf import settings
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
