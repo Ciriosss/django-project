@@ -1,0 +1,13 @@
+
+{% extends "api/base.html" %}
+{% block content %}
+    <form class="form-inline mt-2 mt-md-0"  action="" method="GET">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name = 'string'>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    <br>
+    {% if string %}
+        <h4> The word {{ string }} is contained in all posts {{i}} times</h4>
+    {% else%}
+    {% endif%}
+{% endblock content %}

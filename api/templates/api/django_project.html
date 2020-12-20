@@ -1,0 +1,74 @@
+
+{% extends "api/base.html" %}
+{% block content %}
+    <h1> How does it works?</h1>
+    <p>
+        Welcome to my django project, in this section i'm goin to explate you how does it works.
+        In this way you will be able to use it perfectlly.
+    </p>
+    <div>
+        <h2><font color="#5f788a"> Navbar </font> </h2><br>
+        <div>
+            <h5>Home</h5>
+            <p>
+                In the section home you can see all posts published by cronological order and some details about it!
+                such as: the author, the title, the published date, and obs the content!
+            </p>
+        </div>
+        <div>
+            <h5>Profile</h5>
+            <p>
+                Here you will see information about yourself, you can write a new
+                post and see all those written by you before!
+            </p>
+        </div>
+        <div>
+            <h5>Admin Area</h5>
+            <p>
+                If you can't see this section don't worry! It's means that you are not an Admin,
+                instead if you see it you can check all the user information( username, first name, last name, id, posts)
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <h2> <font color="#5f788a"> Sidebar </font></h2><br>
+        <div>
+            <h5>Json</h5>
+            <p>
+                Here you will get a json response with all information about all posts published in thelast hour!
+                The informations you will find are: the author, the title, the datetime, the content, the hash of the content and the transaction id
+            </p>
+        </div>
+        <div>
+            <h5>Research</h5>
+            <p>
+                Here you can enter any string in the search bar and you will know how many times
+                it is contained in all published posts
+            </p>
+        </div>
+    </div>
+    <div>
+        <h2> <font color="#5f788a"> The platform </font></h2><br>
+        <div>
+            <h5>user/id</h5>
+            <p>
+                Did you read an interesting article by a user? by typing user/id you can
+                access his personal page and read all his posts! <br>
+
+                But what if you don't know the user's id number? from the home section you can click on the link of the
+                author name and you will be taken directly to his personal page!
+            </p>
+        </div>
+        <div>
+            <h5>New Post</h5>
+            <p>
+                when you want you can publish a new post which will need two fields: the title and the content!
+                you can write anything you want except the word 'hack'.
+                In this case you will be shown an error and your post will not be published!
+            </p>
+        </div>
+
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "api/base.html" %}
+{% block content%}
+    <article class="media content-section">
+        <h5><a href="{% url 'profile'%}">Hi {{user}}, Write a new post! </a></h5>
+    </article>
+    {{ ip }}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user_id' id=post.user.id %}">{{ post.user }}</a>
+              <small class="text-muted">{{ post.datetime | date:'F d, Y'}}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

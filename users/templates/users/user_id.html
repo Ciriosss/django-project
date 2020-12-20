@@ -1,0 +1,30 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+<h1> {{ user }} </h1>
+<br>
+<h4> <font color="#5f788a"> PERSONAL INFO </font></h4>
+ <div class="content-section">
+        <div class="media-body">
+            <strong>FIRST NAME : </strong>{{user.first_name}}<br>
+            <strong>LAST NAME : </strong>{{user.last_name}}<br>
+            <strong>EMAIL : </strong> {{user.email}}
+        </div>
+ </div>
+<br>
+    <!-- USER POSTS-->
+    <legend class = 'border-bottom mb-4'><h4> <font color="#5f788a"> POSTS </font></h4> </legend>
+{% for post in user_posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user_id' id=post.user.id %}">{{ post.user }}</a>
+              <small class="text-muted">{{ post.datetime | date:'F d, Y'}}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock %}
+

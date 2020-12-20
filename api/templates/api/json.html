@@ -1,0 +1,6 @@
+{% extends "api/base.html" %}
+{% block content %}
+    {% for post in json%}
+        {{ post }}
+    {% endfor %}
+{% endblock content %}

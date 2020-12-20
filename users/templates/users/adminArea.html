@@ -1,0 +1,55 @@
+{% extends 'api/base.html' %}
+
+{% block content %}
+
+    <style>
+    table{
+    font-size:20px;
+    height:200px;
+    }
+    th{
+    color:#5f788a;
+    }
+    td,th{
+    width:150px;
+    text-align:left;
+    }
+    </style>
+    <table>
+    <tr>
+        <th>USERNAME</th>
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
+        <th>ID</th>
+        <th>POSTS</th>
+    </tr>
+    {% for user in u_posts %}
+        <tr>
+            <td>  <article class="media content-section"><b>{{ user.username }}</b></article></td>
+            <td>  <article class="media content-section">{{ user.first_name }}</article></td>
+            <td>  <article class="media content-section">{{ user.last_name }}</article></td>
+            <td>  <article class="media content-section">{{ user.id }}</article></td>
+            <td>  <article class="media content-section">{{ user.total_posts}}</article></td>
+        </tr>
+
+    {% endfor %}
+
+     </table>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
